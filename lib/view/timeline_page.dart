@@ -3,10 +3,9 @@ import 'package:instagram_v8/components/timeline_post.dart';
 import 'package:instagram_v8/components/timeline_stories.dart';
 import 'package:provider/provider.dart';
 import '../components/bottom_navbar.dart';
-import '../components/discovery_appbar.dart';
+import '../components/discovery_searchbar.dart';
 import '../components/timeline_appbar.dart';
 import '../view_model/timeline_page_view_model.dart';
-import 'discovery_page.dart';
 
 class TimelinePage extends StatefulWidget {
   const TimelinePage({super.key});
@@ -31,7 +30,7 @@ class _TimelinePageState extends State<TimelinePage> {
       case 0:
         return TimelineAppbar();
       case 1:
-        return const DiscoveryAppbar();
+        return DiscoverSearchbar();
       default:
         return null;
     }
@@ -42,7 +41,7 @@ class _TimelinePageState extends State<TimelinePage> {
       case 0:
         return TimelinePostWidget();
       // case 1:
-      //   return DiscoveryPage();
+      //   return DiscoverSearchbar();
       // case 2:
       //   return const PostsPage();
       // case 3:      // case 4:
