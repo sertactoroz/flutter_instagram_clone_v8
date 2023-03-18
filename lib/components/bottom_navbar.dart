@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
-
-import '../view_model/home_page_view_mode.dart';
+import '../view_model/timeline_page_view_model.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({super.key});
@@ -18,8 +16,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       child: Padding(
         padding: const EdgeInsets.only(
           top: 10.0,
-          left: 18.0,
-          right: 18.0,
+          left: 16.0,
+          right: 16.0,
         ),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -39,13 +37,14 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   Widget iconButton(String icon, int index) => GestureDetector(
         onTap: () {
-          context.read<HomePageViewModel>().setPage(index);
+          context.read<TimelinePageViewModel>().setPage(index);
         },
         child: Opacity(
-          opacity: context.watch<HomePageViewModel>().page == index ? 1.0 : 0.7,
+          opacity:
+              context.watch<TimelinePageViewModel>().page == index ? 1.0 : 0.5,
           child: Image.asset(
             icon,
-            width: 28,
+            width: 72,
             height: 28,
           ),
         ),
