@@ -44,7 +44,7 @@ Widget searchBarWidget() {
                 color: Colors.black,
               )),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(25),
               borderSide: BorderSide(
                 color: Colors.black,
               ))),

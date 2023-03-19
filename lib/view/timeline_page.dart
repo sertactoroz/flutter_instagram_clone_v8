@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_v8/components/reels_page.dart';
 import 'package:instagram_v8/components/timeline_post.dart';
 import 'package:provider/provider.dart';
 import '../components/bottom_navbar.dart';
@@ -40,7 +41,11 @@ class _TimelinePageState extends State<TimelinePage> {
           preferredSize: Size.fromHeight(65),
           child: DiscoverSearchbar(),
         );
-
+      // case 3:
+      //   return PreferredSize(
+      //     preferredSize: Size.fromHeight(20),
+      //     child: ReelsAppbar(),
+      //   );
       case 4:
         return PreferredSize(
           preferredSize: Size.fromHeight(280),
@@ -57,15 +62,15 @@ class _TimelinePageState extends State<TimelinePage> {
   Widget get screen {
     switch (context.watch<TimelinePageViewModel>().page) {
       case 0:
-        return TimelinePostWidget();
+        return const TimelinePostWidget();
       case 1:
-        return WidgetGrid();
+        return const WidgetGrid();
       // case 2:
       //   return ReelsBody();
-      // case 3:
-      //   return ReelsBody();
+      case 3:
+        return const ReelsPage();
       case 4:
-        return ProfileBody();
+        return const ProfileBody();
       default:
         return Container();
     }

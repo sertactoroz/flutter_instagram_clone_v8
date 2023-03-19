@@ -32,7 +32,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     "assets/icons/search.png",
     "assets/icons/add.png",
     "assets/icons/reels.png",
-    "assets/icons/profil.png",
+    "assets/profile.png",
   ];
 
   Widget iconButton(String icon, int index) => GestureDetector(

@@ -13,9 +13,9 @@ class TimelineStories extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _TimelineStoriesState extends State<TimelineStories> {
-  Faker faker = Faker();
   @override
   Widget build(BuildContext context) {
+    Faker faker = Faker();
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 100,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_v8/view_model/reels_provider.dart';
 import 'package:instagram_v8/view_model/timeline_page_view_model.dart';
 import 'package:provider/provider.dart';
 import 'app_init.dart';
@@ -15,14 +16,12 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => TimelinePageViewModel()),
+        ChangeNotifierProvider(create: (context) => ReelsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Instagram Clone',
         themeMode: ThemeMode.dark,
-        theme: ThemeData(
-          primarySwatch: Colors.amber,
-        ),
         home: const AppHome(),
       ),
     );
