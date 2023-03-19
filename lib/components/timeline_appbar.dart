@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'custom_icon_button.dart';
 
-class TimelineAppbar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Size get preferredSize => const Size.fromHeight(65);
+class TimelineAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(

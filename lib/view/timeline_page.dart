@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_v8/components/timeline_post.dart';
-import 'package:instagram_v8/components/timeline_stories.dart';
 import 'package:provider/provider.dart';
 import '../components/bottom_navbar.dart';
 import '../components/discovery_searchbar.dart';
+import '../components/profile_appbar.dart';
+import '../components/profile_body.dart';
 import '../components/timeline_appbar.dart';
+import '../components/widget_grid.dart';
 import '../view_model/timeline_page_view_model.dart';
 
 class TimelinePage extends StatefulWidget {
@@ -28,9 +30,25 @@ class _TimelinePageState extends State<TimelinePage> {
   PreferredSizeWidget? get appbar {
     switch (context.watch<TimelinePageViewModel>().page) {
       case 0:
-        return TimelineAppbar();
+        return PreferredSize(
+          preferredSize: Size.fromHeight(65),
+          child: TimelineAppbar(),
+        );
+
       case 1:
-        return DiscoverSearchbar();
+        return PreferredSize(
+          preferredSize: Size.fromHeight(65),
+          child: DiscoverSearchbar(),
+        );
+
+      case 4:
+        return PreferredSize(
+          preferredSize: Size.fromHeight(280),
+          child: ProfilePage(),
+        );
+      // case 3:
+      //   return ReelsAppbar();
+
       default:
         return null;
     }
@@ -40,13 +58,14 @@ class _TimelinePageState extends State<TimelinePage> {
     switch (context.watch<TimelinePageViewModel>().page) {
       case 0:
         return TimelinePostWidget();
-      // case 1:
-      //   return DiscoverSearchbar();
+      case 1:
+        return WidgetGrid();
       // case 2:
-      //   return const PostsPage();
-      // case 3:      // case 4:
-      //   return const ProfilePage();
-
+      //   return ReelsBody();
+      // case 3:
+      //   return ReelsBody();
+      case 4:
+        return ProfileBody();
       default:
         return Container();
     }

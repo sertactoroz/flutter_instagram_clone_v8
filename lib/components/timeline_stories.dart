@@ -1,11 +1,15 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
-class TimelineStories extends StatefulWidget {
+class TimelineStories extends StatefulWidget implements PreferredSizeWidget {
   const TimelineStories({super.key});
 
   @override
   State<TimelineStories> createState() => _TimelineStoriesState();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => throw UnimplementedError();
 }
 
 class _TimelineStoriesState extends State<TimelineStories> {

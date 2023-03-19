@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-class DiscoverSearchbar extends StatelessWidget implements PreferredSizeWidget {
+class DiscoverSearchbar extends StatelessWidget {
   const DiscoverSearchbar({super.key});
 
-  @override
-  Size get preferredSize => const Size.fromHeight(65);
   @override
   Widget build(BuildContext context) {
     return searchBarWidget();

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_v8/components/timeline_stories.dart';
 
-class TimelinePostWidget extends StatefulWidget {
+class TimelinePostWidget extends StatefulWidget implements PreferredSizeWidget {
   const TimelinePostWidget({Key? key}) : super(key: key);
 
   @override
   _TimelinePostWidget createState() => _TimelinePostWidget();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => throw UnimplementedError();
 }
 
 class _TimelinePostWidget extends State<TimelinePostWidget> {
