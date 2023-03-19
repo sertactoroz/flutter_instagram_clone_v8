@@ -1,53 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DiscoverSearchbar extends StatelessWidget {
-  const DiscoverSearchbar({super.key});
+import '../view_model/discovery_view_model.dart';
+
+class DiscoverySearchBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const DiscoverySearchBar({super.key});
 
   @override
+  Size get preferredSize => const Size.fromHeight(65);
+  @override
   Widget build(BuildContext context) {
-    return searchBarWidget();
-  }
-}
-
-Widget searchBarWidget() {
-  TextEditingController _typedText = TextEditingController();
-  return AppBar(
-    backgroundColor: Colors.black,
-    title: TextField(
-      controller: _typedText,
-      onChanged: (value) {
-        print("value $value");
-      },
-      style: TextStyle(color: Colors.grey, fontSize: 16),
-      decoration: InputDecoration(
-          suffixIcon: IconButton(
-            icon: Icon(
-              Icons.clear,
-              color: Colors.grey,
+    return AppBar(
+        backgroundColor: Colors.black,
+        title: Row(
+          children: [
+            SizedBox(
+              height: 40,
+              child: AnimatedContainer(
+                width: MediaQuery.of(context).size.width *
+                    (context.watch<DiscoveryViewModel>().searchView
+                        ? 0.75
+                        : 0.9),
+                duration: const Duration(milliseconds: 250),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white12,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: TextField(
+                    onTap: () {
+                      context.read<DiscoveryViewModel>().changeSearchView();
+                    },
+                    style: const TextStyle(color: Colors.white70),
+                    cursorColor: Colors.white70,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Opacity(
+                            opacity: 0.7,
+                            child: Image.asset(
+                              "assets/icons/search.png",
+                            ),
+                          ),
+                        )
+                        // contentPadding:
+                        //     EdgeInsets.only(left: 5),
+                        ),
+                  ),
+                ),
+              ),
             ),
-            onPressed: () {
-              _typedText.clear();
-            },
-          ),
-          prefixIcon: Icon(
-            Icons.search,
-            color: Colors.grey,
-          ),
-          hintText: "Search",
-          hintStyle: TextStyle(color: Colors.grey),
-          filled: true,
-          fillColor: Color.fromARGB(255, 61, 57, 57),
-          contentPadding: EdgeInsets.symmetric(vertical: 5),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25),
-              borderSide: BorderSide(
-                color: Colors.black,
-              )),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25),
-              borderSide: BorderSide(
-                color: Colors.black,
-              ))),
-    ),
-  );
+            if (context.watch<DiscoveryViewModel>().cancelView) const Spacer(),
+            if (context.watch<DiscoveryViewModel>().cancelView)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GestureDetector(
+                  onTap: () {
+                    context.read<DiscoveryViewModel>().changeSearchView();
+                  },
+                  child: const Text(
+                    "Cancel",
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ),
+              )
+          ],
+        ));
+  }
 }

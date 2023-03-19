@@ -11,11 +11,19 @@ class TimelinePageViewModel extends ChangeNotifier {
 
   List<PostModel> posts = [];
 
-  Future getListData() async {
-    await Future.delayed(const Duration(seconds: 0, milliseconds: 5));
+  // Future getListData() async {
+  //   await Future.delayed(const Duration(seconds: 0, milliseconds: 5));
+  //   int count = Faker().randomGenerator.integer(100, min: 30);
+  //   for (var i = 0; i < count; i++) {
+  //     posts.add(PostModel.fake());
+  //   }
+  // }
+
+  getListData() {
     int count = Faker().randomGenerator.integer(100, min: 30);
     for (var i = 0; i < count; i++) {
       posts.add(PostModel.fake());
     }
+    notifyListeners();
   }
 }

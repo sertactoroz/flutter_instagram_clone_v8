@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
@@ -13,30 +15,42 @@ class TimelineStories extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _TimelineStoriesState extends State<TimelineStories> {
+  Faker faker = Faker();
+
   @override
   Widget build(BuildContext context) {
-    Faker faker = Faker();
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 100,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          _storyItemFirst(faker.person.firstName(), faker.image.image()),
-          _storyItem(faker.person.firstName(), faker.image.image()),
-          _storyItem(faker.person.firstName(), faker.image.image()),
-          _storyItem(faker.person.firstName(), faker.image.image()),
-          _storyItem(faker.person.firstName(), faker.image.image()),
-          _storyItem(faker.person.firstName(), faker.image.image()),
-          _storyItem(faker.person.firstName(), faker.image.image()),
-          _storyItem(faker.person.firstName(), faker.image.image()),
+          _storyItemFirst(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
+          _storyItem(),
         ],
       ),
     );
   }
 }
 
-Widget _storyItem(String name, String image) {
+Widget _storyItem() {
+  final faker = Faker();
+
   return Stack(children: <Widget>[
     Column(
       children: [
@@ -61,7 +75,7 @@ Widget _storyItem(String name, String image) {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: NetworkImage(image),
+                image: NetworkImage(faker.image.image(random: true)),
                 fit: BoxFit.cover,
               ),
             ),
@@ -69,7 +83,7 @@ Widget _storyItem(String name, String image) {
         ),
         SizedBox(
           child: Text(
-            "views",
+            faker.person.firstName(),
             style: TextStyle(color: Colors.white, fontSize: 12),
           ),
         )
@@ -78,7 +92,7 @@ Widget _storyItem(String name, String image) {
   ]);
 }
 
-Widget _storyItemFirst(String name, String image) {
+Widget _storyItemFirst() {
   return Stack(children: <Widget>[
     Container(
       margin: EdgeInsets.all(6),

@@ -39,7 +39,7 @@ class _TimelinePageState extends State<TimelinePage> {
       case 1:
         return PreferredSize(
           preferredSize: Size.fromHeight(65),
-          child: DiscoverSearchbar(),
+          child: DiscoverySearchBar(),
         );
       // case 3:
       //   return PreferredSize(
