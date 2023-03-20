@@ -1,0 +1,5 @@
+{
+    "debug.autoExpandLazyVariables": false,
+    "debug.enableStatusBarColor": true,
+    "workbench.view.alwaysShowHeaderActions": true
+}
